@@ -12,8 +12,8 @@ class user
 VALUES ('" . $email . "','" . $name . "','" . $mobile . "',0,0,0,0,'" . $password . "','" . $ques . "','" . $ans . "')";
 
         if ($conn->query($sql) === true) {
-            echo '<script>alert("Registration done succesfully");
-    window.location="login.php"</script>';
+            echo '<script>alert("Registration done succesfully,Please Validate your account to continue");
+    window.location="validation.php"</script>';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -35,18 +35,58 @@ VALUES ('" . $email . "','" . $name . "','" . $mobile . "',0,0,0,0,'" . $passwor
 
         $row1=array();
 
-        $sql = "SELECT * FROM tbl_user WHERE `email`='".$email."' AND `password`='".$pass."'";
+        $sql = "SELECT * FROM tbl_user WHERE `email`='".$email."'
+         AND `password`='".$pass."'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
            
             while ($row = $result->fetch_assoc()) {
-                array_push($row1,$row);
+                array_push($row1, $row);
             }
             return $row1;
         } else {
             echo "0 results";
         }
+    }
+
+    public function verifyemailuser($conn, $email1) 
+    {
+
+        $sql = "UPDATE tbl_user SET active=1 , email_approved=1  
+        WHERE `email`='".$email1."'";
+
+        if ($conn->query($sql) === true) {
+            unset($_SESSION['email']);
+            unset($_SESSION['mobile']);
+            unset($_SESSION['otp']);
+            echo '<script>alert("Validation done successfully please login to proceed");
+                    window.location="login.php"</script>';
+
+                   
+        } else {
+            echo '<script>alert("Please enter valid otp");
+            window.location="validation.php"</script>';
+        }
+
+
+    }
+
+    public function verifymobileuser($conn, $mobile1) 
+    {
+
+        $sql = "UPDATE tbl_user SET active=1 , phone_approved=1 
+        WHERE `mobile`='".$mobile1."'";
+
+        if ($conn->query($sql) === true) {
+            echo '<script>alert("Validation done successfully please login to proceed");
+                    window.location="login.php"</script>';
+        } else {
+            echo '<script>alert("Please enter valid otp");
+            window.location="validation.php"</script>';
+        }
+
+
     }
 
 }
