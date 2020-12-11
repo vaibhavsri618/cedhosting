@@ -9,10 +9,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 -->
 <?php
+
+
 session_start();
-if(isset($_SESSION['userdata']))
-{
-	//print_r($_SESSION['userdata']);
+if (isset($_SESSION['userdata'])) {
+
 }
 
 require 'header.php';

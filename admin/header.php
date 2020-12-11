@@ -54,6 +54,8 @@ if ($_SESSION['userdata']['name']=="admin") {
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
           <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <!-- <p><a href="index.php"><span style="color: #585CA7;">Ced</span> <span style="color: #e7663f;">Hosting</span></a></p>
+						 -->
         </a>
       </div>
       <div class="navbar-inner">
@@ -80,13 +82,13 @@ if ($_SESSION['userdata']['name']=="admin") {
                             </a>
                         </ul>
                         <ul class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="addproduct.php">
                                 <i class="ni ni-single-02 text-yellow"></i>
                                 <span class="nav-link-text">Add Product</span>
                             </a>
                         </ul>
                         <ul class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="viewproduct.php">
                                 <i class="ni ni-single-02 text-yellow"></i>
                                 <span class="nav-link-text">View Product</span>
                             </a>

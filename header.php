@@ -3,8 +3,12 @@
 
 		
 $filename=basename($_SERVER['REQUEST_URI']);
-$file=explode("?",$filename);
-$hosting=array('cmshosting.php','linuxhosting.php','windowshosting.php','wordpresshosting.php');
+$file=explode("?", $filename);
+$hosting=array('cmshosting.php','linuxhosting.php',
+'windowshosting.php','wordpresshosting.php');
+
+require 'classes/Dbconnect.php';
+require 'classes/Product.php';
 
  
 
@@ -12,7 +16,7 @@ $hosting=array('cmshosting.php','linuxhosting.php','windowshosting.php','wordpre
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Planet Hosting a Hosting Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>CedHosting a Hosting Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,26 +38,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen">
 <!--lightboxfiles-->
 <script type="text/javascript">
-	$(function() {
-	$('.team a').Chocolat();
-	});
+$(function() {
+$('.team a').Chocolat();
+});
 </script>	
-<script type="text/javascript" src="js/jquery.hoverdir.js"></script>	
-						<script type="text/javascript">
-							$(function() {
-							
-								$(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
+   
+   <script type="text/javascript" src="js/jquery.hoverdir.js"></script>	
+<script type="text/javascript">
+$(function() {
 
-							});
-                        </script>	
-                        
-                        <link rel="stylesheet" href="css/swipebox.css">
-			<script src="js/jquery.swipebox.min.js"></script> 
-			    <script type="text/javascript">
-					jQuery(function($) {
-						$(".swipebox").swipebox();
-					});
-				</script>
+$(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
+
+});
+</script>	
+
+<link rel="stylesheet" href="css/swipebox.css">
+<script src="js/jquery.swipebox.min.js"></script> 
+<script type="text/javascript">
+jQuery(function($) {
+$(".swipebox").swipebox();
+});
+</script>
 <!--script-->
 </head>
 
@@ -74,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<i class="icon-bar"></i>
 							</button>				  
 							<div class="navbar-brand">
-								<h1><a href="index.html"><span style="color: #585CA7;">Ced</span> <span style="color: #e7663f;">Hosting</span></a></h1>
+								<h1><a href="index.php"><span style="color: #585CA7;">Ced</span> <span style="color: #e7663f;">Hosting</span></a></h1>
 							</div>
 						</div>
 
@@ -92,14 +97,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 									
 									<ul class="dropdown-menu">
-										<li <?php if ($file[0]=='linuxhosting.php') : ?>class="active"<?php endif;?>><a href="linuxhosting.php">Linux hosting</a></li>
-										<li <?php if ($file[0]=='wordpresshosting.php') : ?>class="active"<?php endif;?>><a href="wordpresshosting.php">WordPress Hosting</a></li>
-										<li <?php if ($file[0]=='windowshosting.php') : ?>class="active"<?php endif;?>><a href="windowshosting.php">Windows Hosting</a></li>
-										<li <?php if ($file[0]=='cmshosting.php') : ?>class="active"<?php endif;?>><a href="cmshosting.php">CMS Hosting</a></li>
-									</ul>			
+
+									<?php
+
+												$dbconnect=new Dbconnect();
+												$product=new Product();
+												$row1=$product->fetchcategory1($dbconnect->conn);
+												if (isset($row1)) {
+												
+																foreach ($row1 as $key=>$row) {
+
+																	if($row['id']!=1)
+																	{
+
+												
+
+									?>
+									
+										<li <?php if ($file[0]==$row['link']) : ?>class="active"<?php endif;?>><a href="<?php echo $row['link']?>"><?php echo $row['prod_name']?></a></li>
+											
+											
+											<?php
+					}		}			
+				}
+											?>
+
+												
+</ul>			
 								</li>
-								
-							
 							
 						
 								<li class="<?php if ($file[0]=='pricing.php') : ?>active<?php endif; ?>"><a href="pricing.php">Prices</a></li>
