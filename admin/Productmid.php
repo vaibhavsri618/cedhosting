@@ -67,6 +67,19 @@ if(isset($_POST['submit10']))
     $lang=$_POST['lang'];
     $mail=$_POST['mail'];
 
+    if($name=="" || $select=="" || $price1=="" || $price2=="" || $sku=="" || $webspace=="" || $band==""
+    ||$free==""|| $lang==""||$mail=="") {
+
+        echo"<script>
+        
+        alert('Field Cant be empty')
+        window.location='addproduct.php';
+        </script>";
+
+
+    }
+
+
 
     $pro=new Product();
     $dbconnect=new Dbconnect();
@@ -94,5 +107,62 @@ $row1=$pro->addfinalproduct($row, $price1, $price2, $dbconnect->conn, $sku, $jso
 
 
 
+}
+
+if(isset($_POST['updateproduct']))
+{
+
+    $updatename=isset($_POST['updatename'])?$_POST['updatename']:"";
+    $updateavailable=isset($_POST['updateavailable'])?$_POST['updateavailable']:"";
+    $link=isset($_POST['updatelink'])?$_POST['updatelink']:"";
+    $hidden=($_POST['hidden']);
+   
+    $updatemonthly=$_POST['updatemonthly'];
+    $updateannual=$_POST['updateannual'];
+
+    $updatesku=$_POST['updatesku'];
+    $updatewebspace=$_POST['updatewebspace'];
+    $updateband=$_POST['updateband'];
+
+    $updatefree=$_POST['updatefree'];
+    $updatelang=$_POST['updatelang'];
+    $updatemail=$_POST['updatemail'];
+
+
+    $pro=new Product();
+    $dbconnect=new Dbconnect();
+    $row=$pro->updateproduct($updatename, $updateavailable, $link, $hidden,$dbconnect->conn);
+   
+    
+  
+
+    $arr=array("webspace"=>$updatewebspace,
+                "band"=>$updateband,
+                "free"=>$updatefree,
+                "lang"=>$updatelang,
+                "mail"=>$updatemail
+
+    
+    
+);
+
+$json_arr=json_encode($arr);
+
+
+$row1=$pro->updatefinalproduct($hidden, $updatemonthly, $updateannual, $dbconnect->conn, $updatesku, $json_arr);
+
+
+
+    
+
+
+}
+
+if(isset($_GET['id15']))
+{
+    $id=$_GET['id15'];
+    $pro=new Product();
+    $dbconnect=new Dbconnect();
+    $row=$pro->deleteproduct($id,$dbconnect->conn);
 }
 ?>

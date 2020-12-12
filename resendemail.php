@@ -31,7 +31,7 @@ require '/home/cedcoss/vendor/autoload.php';
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'vaibhavsri618@gmail.com';
-                $mail->Password = '8009652584';
+                $mail->Password = '';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 

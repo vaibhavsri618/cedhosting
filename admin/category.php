@@ -28,16 +28,13 @@ require '../classes/Product.php';
               <h6 class="h2 text-white d-inline-block mb-0">Tables</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                  <li class="breadcrumb-item"><a href="index.php"><i class="fas fa-home"></i></a></li>
+                 
                   <li class="breadcrumb-item active" aria-current="page">Tables</li>
                 </ol>
               </nav>
             </div>
-            <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">New</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -97,7 +94,7 @@ require '../classes/Product.php';
                       <span class="input-group-text"></span>
                     </div>
                     <input class="form-control" name="name" 
-                    placeholder="Name" type="text" required>
+                    placeholder="Name" type="text" pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -137,13 +134,13 @@ require '../classes/Product.php';
                   <tr>
                     <th scope="col" class="sort" data-sort="name">Id</th>
                     <th scope="col" class="sort" 
-                    data-sort="budget">Parent Product Id</th>
+                    data-sort="budget">Parent Product</th>
                     <th scope="col" class="sort" 
-                    data-sort="status">Product Name </th>
+                    data-sort="status">Category Name </th>
                     <th scope="col">Link</th>
-                    <th scope="col">Product Available</th>
+                    <th scope="col">Category Available</th>
                     <th scope="col" class="sort" 
-                    data-sort="completion">Product Launch Date</th>
+                    data-sort="completion">Category Launch Date</th>
                     <th scope="col">Action</th>
                    
                   </tr>
@@ -170,13 +167,12 @@ require '../classes/Product.php';
                         <?php echo $row['id']; ?>
                     </th>
                     <td class="budget">
-                    <?php 
-                    if ($row['prod_parent_id']==1) {
+                    <?php $id12=$row['prod_parent_id'];
+                    $p=$product->viewparent($dbconnect->conn,$id12);
+                    $row11=$p->fetch_assoc();
 
-                        $parent="Hosting";
-
-
-                    } echo $parent;?>
+                   
+                        echo $row11['prod_name'];?>
                     </td>
                     <td>
                     <?php echo $row['prod_name']; ?>
@@ -224,7 +220,7 @@ require '../classes/Product.php';
                     </td>
                   </tr>
 
-                  <div class="modal fade" id="modalForm<?php echo $row['id'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade" id="modalForm<?php echo $row['id'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

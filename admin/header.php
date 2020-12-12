@@ -52,10 +52,10 @@ if ($_SESSION['userdata']['name']=="admin") {
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
-          <!-- <p><a href="index.php"><span style="color: #585CA7;">Ced</span> <span style="color: #e7663f;">Hosting</span></a></p>
-						 -->
+        <!-- <a class="navbar-brand" href="javascript:void(0)"> -->
+          <!-- <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="..."> -->
+          <h1 class="navbar-brand"><a href="index.php"><span style="color: #585CA7;font-size:30px">Ced</span> <span style="color: #e7663f;font-size:30px">Hosting</span></a></h1>
+						
         </a>
       </div>
       <div class="navbar-inner">
