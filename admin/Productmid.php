@@ -9,6 +9,7 @@ if (isset($_POST['submit5'])) {
     $name=isset($_POST['name'])?$_POST['name']:"";
     $select=isset($_POST['select'])?$_POST['select']:"";
     $link=isset($_POST['link'])?$_POST['link']:"";
+    
 
     $pro=new Product();
     $dbconnect=new Dbconnect();
@@ -21,6 +22,7 @@ if(isset($_POST['update']))
     $select=isset($_POST['updateavailable'])?$_POST['updateavailable']:"";
     $link=isset($_POST['updatelink'])?$_POST['updatelink']:"";
     $hidden=$_POST['hidden'];
+    
 
     // echo $hidden;
 
@@ -111,7 +113,7 @@ $row1=$pro->addfinalproduct($row, $price1, $price2, $dbconnect->conn, $sku, $jso
 
 if(isset($_POST['updateproduct']))
 {
-
+    $updateparent=$_POST['updateparent'];
     $updatename=isset($_POST['updatename'])?$_POST['updatename']:"";
     $updateavailable=isset($_POST['updateavailable'])?$_POST['updateavailable']:"";
     $link=isset($_POST['updatelink'])?$_POST['updatelink']:"";
@@ -131,7 +133,7 @@ if(isset($_POST['updateproduct']))
 
     $pro=new Product();
     $dbconnect=new Dbconnect();
-    $row=$pro->updateproduct($updatename, $updateavailable, $link, $hidden,$dbconnect->conn);
+    $row=$pro->updateproduct($updateparent,$updatename, $updateavailable, $link, $hidden,$dbconnect->conn);
    
     
   
@@ -164,5 +166,22 @@ if(isset($_GET['id15']))
     $pro=new Product();
     $dbconnect=new Dbconnect();
     $row=$pro->deleteproduct($id,$dbconnect->conn);
+}
+
+if(isset($_POST['name5']))
+{
+    $name=$_POST['name5'];
+    $name=strtolower($name);
+
+    $pro=new Product();
+    $dbconnect=new Dbconnect();
+    $row=$pro->countcat($name,$dbconnect->conn);
+
+    if($row==1)
+    {
+        echo "Category name already present";
+        
+    }
+
 }
 ?>

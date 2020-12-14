@@ -89,4 +89,19 @@ VALUES ('" . $email . "','" . $name . "','" . $mobile . "',0,0,0,0,'" . $passwor
 
     }
 
+    function catpage($id,$conn)
+    {
+        $sql = "SELECT * FROM tbl_product WHERE id='".$id."'";
+        $result = $conn->query($sql);
+        $row1=array();
+        if ($result->num_rows > 0) {
+        
+        while($row = $result->fetch_assoc()) {
+
+            array_push($row1,$row);
+        }
+        return $row1;
+        } 
+    }
+
 }

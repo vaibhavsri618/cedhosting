@@ -94,7 +94,7 @@ require '../classes/Product.php';
                      <?php echo $row['prod_name']?>
                     <td>
 
-                    <?php echo $row['link']?>
+                    <?php echo $row['html']?>
                     
                     </td>
                     <td>
@@ -198,21 +198,41 @@ require '../classes/Product.php';
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
         <label data-error="wrong" data-success="right" for="defaultForm-email">Parent Name</label>
-          <input type="text" id="defaultForm-email" class="form-control validate" value="<?php echo $row11['prod_name'] ?>" readonly name="updateparent">
+          <!-- <input type="text" id="defaultForm-email" class="form-control validate" value="" readonly name="updateparent"> -->
+
+          <select class="form-control" id="select" name="updateparent" style="width:420px">
+          <option value="<?php echo $row11['prod_name'] ?>"><?php echo $row11['prod_name'] ?></option>
+
+          <?php
+
+          $row15=$prod->fetchcategory($dbconnect->conn);
+
+          foreach($row15 as $key=>$val)
+          {
+          if($row11['prod_name']==$val['prod_name'])
+          {
+            continue;
+          }?>
+          <option value="<?php echo $val['id'] ?>"><?php echo $val['prod_name'] ?></option>
+
+        <?php } ?>
+        </select>
+          
+            
           <input type="hidden" name="hidden" value="<?php echo $row['prod_id']?>">
         </div>
 
         <div class="md-form mb-5">
         <label data-error="wrong" data-success="right" for="defaultForm-email">Product Name</label>
-          <input type="text" id="defaultForm-email" class="form-control validate" value="<?php echo $row['prod_name'] ?>" name="updatename" required>
-         
+          <input type="text" id="proname" class="form-control validate" value="<?php echo $row['prod_name'] ?>" name="updatename" required>
+          <p id="prodname" style="color:red"></p>
         </div>
 
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Link</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatelink" value="<?php echo $row['link'] ?>">
-         
+          <input type="text" id="prourl" class="form-control validate" name="updatelink" value="<?php echo $row['html'] ?>">
+          <p id="produrl" style="color:red"></p>
         </div>
 
         <div class="md-form mb-4">
@@ -253,56 +273,57 @@ require '../classes/Product.php';
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Monthly Price</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatemonthly" value="<?php echo $row['mon_price']; ?>">
-         
+          <input type="text" id="proprice" class="form-control validate" name="updatemonthly" value="<?php echo $row['mon_price']; ?>">
+          <p id="prodprice" style="color:red"></p>
         </div>
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Annual Price</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updateannual" value="<?php echo $row['annual_price']; ?>">
-         
+          <input type="text" id="proannualprice" class="form-control validate" name="updateannual" value="<?php echo $row['annual_price']; ?>">
+          <p id="prodallprice" style="color:red"></p>
         </div>
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">SKU</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatesku" value="<?php echo $row['sku']; ?>">
-         
+          <input type="text" id="prosku" class="form-control validate" name="updatesku" value="<?php echo $row['sku']; ?>">
+          <p id="prodsku" style="color:red"></p>
         </div>
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Webspace</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatewebspace" value="<?php echo $arr['webspace']; ?>">
-         
+          <input type="text" id="proweb" class="form-control validate" name="updatewebspace" value="<?php echo $arr['webspace']; ?>">
+          <p id="prodweb" style="color:red"></p>
+          
         </div>
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Band Width</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updateband" value="<?php echo $arr['band']; ?>">
-         
+          <input type="text" id="proband" class="form-control validate" name="updateband" value="<?php echo $arr['band']; ?>">
+          <p id="prodband" style="color:red"></p>
         </div>
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Free Domain</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatefree" value="<?php echo $arr['free']; ?>">
-         
+          <input type="text" id="profree" class="form-control validate" name="updatefree" value="<?php echo $arr['free']; ?>">
+          <p id="prodfree" style="color:red"></p>
         </div>
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Language</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatelang" value="<?php echo $arr['lang']; ?>">
-         
+          <input type="text" id="prolang" class="form-control validate" name="updatelang" value="<?php echo $arr['lang']; ?>">
+          <p id="prodlang" style="color:red"></p>
         </div>
 
         <div class="md-form mb-4">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Mail Box</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatemail" value="<?php echo $arr['mail']; ?>">
-         
+          <input type="text" id="promail" class="form-control validate" name="updatemail" value="<?php echo $arr['mail']; ?>">
+          <p id="prodmail" style="color:red"></p>
         </div>
 
        
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" id="Update" value="Update" name="updateproduct">
+        <input type="submit" class="btn btn-default" id="submit11" value="Update" name="updateproduct">
       </div>
       </form>
     </div>

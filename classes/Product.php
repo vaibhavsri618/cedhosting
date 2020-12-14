@@ -6,7 +6,7 @@ class Product
     function fetchcategory($conn)
     {
         $row1=array();
-        $sql = "SELECT * FROM tbl_product";
+        $sql = "SELECT * FROM tbl_product WHERE prod_parent_id=1";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -47,7 +47,7 @@ class Product
     {
 
 
-        $sql = "INSERT INTO tbl_product (prod_parent_id, prod_name, link, prod_available, prod_launch_date)
+        $sql = "INSERT INTO tbl_product (prod_parent_id, prod_name, html, prod_available, prod_launch_date)
             VALUES ('".$select."', '".$name."', '".$link."', 1, NOW())";
 
         if ($conn->query($sql) === true) {
@@ -61,7 +61,7 @@ class Product
 
     function updatecategory($name, $select, $link, $hidden, $conn)
     {
-        $sql = "UPDATE tbl_product SET prod_name='".$name."',link='".$link."',prod_available='".$select."' WHERE id='".$hidden."'";
+        $sql = "UPDATE tbl_product SET prod_name='".$name."',html='".$link."',prod_available='".$select."' WHERE id='".$hidden."'";
 
         if ($conn->query($sql) === TRUE) {
             echo "<script>
@@ -94,7 +94,7 @@ class Product
     {
 
 
-        $sql = "INSERT INTO tbl_product (prod_parent_id, prod_name, link, prod_available, prod_launch_date)
+        $sql = "INSERT INTO tbl_product (prod_parent_id, prod_name, html, prod_available, prod_launch_date)
             VALUES ('".$select."', '".$name."', '".$link."', 1, NOW())";
 
         if ($conn->query($sql) === true) {
@@ -147,10 +147,10 @@ class Product
     
      }
 
-     function updateproduct($updatename, $updateavailable, $link,$hidden, $conn)
+     function updateproduct($updateparent,$updatename, $updateavailable, $link,$hidden, $conn)
      {
          
-        $sql = "UPDATE tbl_product SET prod_name='".$updatename."',link='".$link."',prod_available='".$updateavailable."' WHERE id='".$hidden."'";
+        $sql = "UPDATE tbl_product SET prod_parent_id='".$updateparent."', prod_name='".$updatename."',html='".$link."',prod_available='".$updateavailable."' WHERE id='".$hidden."'";
 
         if ($conn->query($sql) === TRUE) {
 
@@ -191,6 +191,17 @@ class Product
         } else {
           echo "Error deleting record: " . $conn->error;
         }
+     }
+
+     function countcat($name,$conn)
+     {
+
+        $sql = "SELECT lower(prod_name) FROM tbl_product WHERE prod_name='".$name."'";
+        $result = $conn->query($sql);
+        $count=0;
+        $count=$result->num_rows;
+        return $count;
+
      }
 
 }

@@ -2,8 +2,8 @@
 <?php
 
 require 'header.php';
-require 'classes/Dbconnect.php';
-require 'classes/user.php';
+// require 'classes/Dbconnect.php';
+// require 'classes/user.php';
 
 
 

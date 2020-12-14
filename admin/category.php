@@ -66,20 +66,19 @@ require '../classes/Product.php';
 
                       $row1=$product->fetchcategory($dbconnect->conn);
                     if (isset($row1)) {
-                        foreach ($row1 as $key=>$row) {
+                       
 
-                            if ($row['id']==1) {
 
                           
 
                     
                     
                 ?>
-                 <option value="<?php echo $row['id']; ?>">
-                    <?php echo $row['prod_name']; ?></option>
+                 <option value=1>Hosting
+                    </option>
                     <?php
-                            } 
-                        }
+                            
+                        
                     }
                     ?>
                     </select>
@@ -94,8 +93,10 @@ require '../classes/Product.php';
                       <span class="input-group-text"></span>
                     </div>
                     <input class="form-control" name="name" 
-                    placeholder="Name" type="text" pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$" required>
+                    placeholder="Name" type="text" id="catname" pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$" required><br>
+                   
                   </div>
+                  <p id="catoname" style="color:red"></p>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge 
@@ -110,7 +111,7 @@ require '../classes/Product.php';
                 
                 <div class="text-center">
                   <input type="submit" 
-                  class="btn btn-primary mt-4" name="submit5" value="Add Category">
+                  class="btn btn-primary mt-4" name="submit5" id="submit11" value="Add Category">
                 </div>
               </form>
             </div>
@@ -181,10 +182,10 @@ require '../classes/Product.php';
                     <td>
 
                     <?php 
-                    if ($row['link']=="") {
+                    if ($row['html']=="") {
                         $link="Null";
                     } else {
-                        $link=$row['link'];
+                        $link=$row['html'];
 
                     }
 
@@ -234,7 +235,7 @@ require '../classes/Product.php';
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
         <label data-error="wrong" data-success="right" for="defaultForm-email">Parent Name</label>
-          <input type="text" id="defaultForm-email" class="form-control validate" value="<?php echo $parent ?>" readonly name="updateparent">
+          <input type="text" id="defaultForm-email" class="form-control validate" value="<?php echo $row11['prod_name'] ?>" readonly name="updateparent">
           <input type="hidden" name="hidden" value="<?php echo $row['id']?>">
         </div>
 

@@ -3,9 +3,10 @@
 
 		
 $filename=basename($_SERVER['REQUEST_URI']);
-$file=explode("?", $filename);
-$hosting=array('cmshosting.php','linuxhosting.php',
-'windowshosting.php','wordpresshosting.php');
+//$file=explode("?", $filename);
+$file=$filename;
+$hosting=array('catpage.php?catid=4','catpage.php?catid=2',
+'catpage.php?catid=3','catpage.php?catid=5');
 
 require 'classes/Dbconnect.php';
 require 'classes/Product.php';
@@ -86,13 +87,13 @@ $(".swipebox").swipebox();
 			<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
-								<li class="<?php if ($file[0]=='index.php') : ?>active<?php endif; ?>"><a href="index.php">Home <i class="sr-only">(current)</i></a></li>
-								<li class="<?php if ($file[0]=='about.php') : ?>active<?php endif; ?>"><a href="about.php">About</a></li>
+								<li class="<?php if ($file=='index.php') : ?>active<?php endif; ?>"><a href="index.php">Home <i class="sr-only">(current)</i></a></li>
+								<li class="<?php if ($file=='about.php') : ?>active<?php endif; ?>"><a href="about.php">About</a></li>
 							
-								<li class="<?php if ($file[0]=='services.php') : ?>active<?php endif; ?>"><a href="services.php">Services</a></li>
+								<li class="<?php if ($file=='services.php') : ?>active<?php endif; ?>"><a href="services.php">Services</a></li>
 								
 								
-										<li class="dropdown <?php if (in_array($file[0], $hosting)) : ?>active<?php endif; ?>">
+										<li class="dropdown <?php if (in_array($file, $hosting)) : ?>active<?php endif; ?>">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hosting<i class="caret"></i></a>
 								
 									
@@ -114,7 +115,7 @@ $(".swipebox").swipebox();
 
 									?>
 									
-										<li <?php if ($file[0]==$row['link']) : ?>class="active"<?php endif;?>><a href="<?php echo $row['link']?>"><?php echo $row['prod_name']?></a></li>
+										<li <?php if ($file==$row['html']) : ?>class="active"<?php endif;?>><a href="catpage.php?catid=<?php echo $row['id']?>"><?php echo $row['prod_name']?></a></li>
 											
 											
 											<?php
