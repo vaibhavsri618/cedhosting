@@ -149,6 +149,8 @@ class Product
 
      function updateproduct($updateparent,$updatename, $updateavailable, $link,$hidden, $conn)
      {
+         echo $updateavailable;
+         echo $updateparent;
          
         $sql = "UPDATE tbl_product SET prod_parent_id='".$updateparent."', prod_name='".$updatename."',html='".$link."',prod_available='".$updateavailable."' WHERE id='".$hidden."'";
 
@@ -156,9 +158,16 @@ class Product
 
             $last_id = $conn->insert_id;
 
+
+      
+
             return $last_id;
+
            
         }
+       
+
+
 
      }
 
@@ -174,6 +183,9 @@ class Product
         window.location='viewproduct.php'</script>";
            
         }
+        else {
+            echo "Error Updating record: " . $conn->error;
+          }
 
 
      }

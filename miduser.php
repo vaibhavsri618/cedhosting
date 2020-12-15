@@ -36,9 +36,16 @@ if (isset($_POST['submit1'])) {
     }
 
     if ($display != 0) {
-        echo '<script>alert("User already present")
+        echo '<script>alert("Email already present")
     window.location="account.php"</script>';
         $error[] = array("id" => 'form', 'msg' => "User already present");
+    }
+
+    $countmob = $user->countmob($mobile,$dbconnect->conn);
+    if ($countmob != 0) {
+        echo '<script>alert("mobile already present")
+    window.location="account.php"</script>';
+        $error[] = array("id" => 'form', 'msg' => "Mobile already present");
     }
 
     if (count($error) == 0) {
@@ -154,10 +161,14 @@ if (isset($_POST['loginsubmit'])) {
                 $name = $row['name'];
                 $id = $row['id'];
                 $admin = $row['is_admin'];
+                $password=$row['password'];
                 $active = $row['active'];
                 $email_approve=$row['email_approved'];
                 $phone_approve=$row['phone_approved'];
+             
             }
+            if($password==$loginpass)
+            {
 
             if ($admin == 1) {
                 $_SESSION['userdata'] = array(
@@ -196,8 +207,17 @@ if (isset($_POST['loginsubmit'])) {
 
             }
 
+          
+
             
-        } else {
+        }  
+        else
+        {
+            echo '<script>alert("Password Not Matched")
+            window.location="login.php"</script>';
+            
+        }
+    } else {
 
             echo '<script>alert("Please Register First")
         window.location="account.php"</script>';
@@ -266,3 +286,25 @@ if (isset($_POST['submit4'])) {
 
 
 }
+
+if(isset($_POST['mobile5']))
+{
+    $Mobile=$_POST['mobile5'];
+  
+    
+    $pro=new user();
+    $dbconnect=new Dbconnect();
+    $row=$pro->countmob($Mobile,$dbconnect->conn);
+
+    
+   
+
+    if($row>=1)
+    {
+        echo "Mobile already present";
+        
+    }
+
+}
+
+

@@ -35,8 +35,7 @@ VALUES ('" . $email . "','" . $name . "','" . $mobile . "',0,0,0,0,'" . $passwor
 
         $row1=array();
 
-        $sql = "SELECT * FROM tbl_user WHERE `email`='".$email."'
-         AND `password`='".$pass."'";
+        $sql = "SELECT * FROM tbl_user WHERE `email`='".$email."'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -102,6 +101,40 @@ VALUES ('" . $email . "','" . $name . "','" . $mobile . "',0,0,0,0,'" . $passwor
         }
         return $row1;
         } 
+    }
+
+
+    function countmob($Mobile,$conn)
+    {
+        $sql = "SELECT * FROM tbl_user WHERE mobile='$Mobile'";
+        $result = $conn->query($sql);
+      
+         $count=$result->num_rows;
+       return $count;
+    }
+
+
+    function catpagedata($id,$conn)
+
+    {
+        $row1=array();
+        $sql = "SELECT * FROM tbl_product INNER JOIN tbl_product_description ON tbl_product.id=tbl_product_description.prod_id WHERE tbl_product.prod_parent_id='".$id."' AND prod_available=1";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+       
+            while ($row = $result->fetch_assoc()) {
+
+                array_push($row1, $row);
+                
+            }
+            return $row1;
+        } else {
+            echo "0 results";
+        }
+
+
+
     }
 
 }

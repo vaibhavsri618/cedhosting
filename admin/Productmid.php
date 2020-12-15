@@ -129,7 +129,7 @@ if(isset($_POST['updateproduct']))
     $updatefree=$_POST['updatefree'];
     $updatelang=$_POST['updatelang'];
     $updatemail=$_POST['updatemail'];
-
+   
 
     $pro=new Product();
     $dbconnect=new Dbconnect();

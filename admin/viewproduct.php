@@ -20,7 +20,8 @@ require '../classes/Product.php';
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="index.php"><i class="fas fa-home"></i></a></li>
 
-                  <li class="breadcrumb-item active" aria-current="page">Tables</li>
+                  <li class="breadcrumb-item active" aria-current="page">Products</li>
+                  <li class="breadcrumb-item active" aria-current="page">View Products</li>
                 </ol>
               </nav>
             </div>
@@ -201,7 +202,7 @@ require '../classes/Product.php';
           <!-- <input type="text" id="defaultForm-email" class="form-control validate" value="" readonly name="updateparent"> -->
 
           <select class="form-control" id="select" name="updateparent" style="width:420px">
-          <option value="<?php echo $row11['prod_name'] ?>"><?php echo $row11['prod_name'] ?></option>
+          <option value="<?php echo $row11['id'] ?>"><?php echo $row11['prod_name'] ?></option>
 
           <?php
 

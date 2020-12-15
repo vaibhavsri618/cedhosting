@@ -22,6 +22,7 @@ $(document).ready(function(){
     $("#prodfree").hide();
     $("#prodlang").hide();
     $("#prodmail").hide();
+    $("#catoname").hide();
     $("#submit10").attr("disabled",true);
 
     $name=$("#proname").val();
@@ -143,6 +144,9 @@ $("#proprice").focusout(function() {
 
 $("#proannualprice").focusout(function() {
     $proprice = $("#proannualprice").val();
+    $promonprice = $("#proprice").val();
+    console.log($promonprice);
+    console.log($proprice);
     if ($proprice == "") {
         $("#prodallprice").html("*Select Product Annual price");
         $("#prodallprice").show();
@@ -164,6 +168,16 @@ $("#proannualprice").focusout(function() {
         $(this).css('border', 'solid 3px red'); 
         count4=0;
     }
+    if ($promonprice >= $proprice) {
+        $("#prodallprice").html("*Annual Price Can't be less than Monthly Price");
+        $("#prodallprice").show();
+       $("#submit10").attr("disabled",true);
+       $("#submit11").attr("disabled",true);
+
+
+        $(this).css('border', 'solid 3px red');
+        count4=0;
+    }  
     
     else {
         
@@ -327,51 +341,85 @@ $("#profree").focusout(function() {
 });
 
 
+
+
+
+
+
 $("#prolang").focusout(function() {
     $prolang = $("#prolang").val();
     if ($prolang == "") {
-        $("#prodlang").html("*Select lang Space in G.B");
-        $("#prodlang").show();
-       $("#submit10").attr("disabled",true);
-       $("#submit11").attr("disabled",true);
-
-        $(this).css('border', 'solid 3px red');
-        count8=0;
-    }  
-    else if(!$prolang.match(/^[a-zA-Z ,]+[a-zA-Z]+$/))
+    $("#prodlang").html("*Enter language!!");
+    $("#prodlang").show();
+    $("#submit10").attr("disabled",true);
+    $("#submit11").attr("disabled",true);
+    
+    $(this).css('border', 'solid 3px red');
+    count8=0;
+    }
+    else if(!$prolang.match(/^(((?!\s)+[a-zA-Z0-9]+[a-zA-Z0-9*(+*, )]+))+$/))
     {
-        $("#prodlang").html("*Select Valid language");
-        $("#prodlang").show();
-       $("#submit10").attr("disabled",true);
-       $("#submit11").attr("disabled",true);
-
-        $(this).css('border', 'solid 3px red'); 
-        count8=0;
+    $("#prodlang").html("*Enter Valid language");
+    $("#prodlang").show();
+    $("#submit10").attr("disabled",true);
+    $("#submit11").attr("disabled",true);
+    $(this).css('border', 'solid 3px red');
+    count8=0;
+    
     }
-   
+    
+    
+  
+    
     else {
-        
-        $("#prodlang").hide();
-        $("#submit11").attr("disabled",false);
-        $(this).css('border', 'solid 3px green');
-        count8=1;
+    
+    count8=1;
+    //$("#add").attr("disabled",false);
+    $("#prodlang").hide();
+    $(this).css('border', 'solid 3px green');
+    $("#submit11").attr("disabled",false);
+    
+
+    if($prolang.endsWith(",")) {
+    $("#prodlang").html("*Enter Valid language");
+    $("#prodlang").show();
+    $("#submit10").attr("disabled",true);
+    $("#submit11").attr("disabled",true);
+    
+    $(this).css('border', 'solid 3px red');
+    count8=0;
+    } else if($prolang.endsWith(" ")) {
+    $("#prodlang").html("*Enter Valid language");
+    $("#prodlang").show();
+    $("#submit10").attr("disabled",true);
+    $("#submit11").attr("disabled",true);
+    
+    $(this).css('border', 'solid 3px red');
+    count8=0;
     }
-
+    }
     buttonShow();
-
-
     
     
-   
-
-
-
-});
+    
+    });
 
 
 
 $("#promail").focusout(function() {
     $promail = $("#promail").val();
+
+    $first=$promail.substr(0,1);
+    console.log($first);
+    
+    if($first.match(/^[a-zA-Z]+$/))
+    {
+       $pattern=/^[a-zA-Z]+$/;
+    }
+    else if($first.match(/^[0-9]+$/))
+    {
+       $pattern=/^[0-9]+$/;
+    } 
     if ($promail == "") {
         $("#prodmail").html("*Select Mail");
         $("#prodmail").show();
@@ -381,7 +429,7 @@ $("#promail").focusout(function() {
         $(this).css('border', 'solid 3px red');
         count9=0;
     }  
-    else if(!$promail.match(/^[0-9]+$/))
+    else if(!$promail.match($pattern))
     {
         $("#prodmail").html("*Select Valid Mail box");
         $("#prodmail").show();
@@ -419,15 +467,8 @@ $("#prosku").focusout(function() {
         $(this).css('border', 'solid 3px red');
         count10=0;
     } 
-    else if($prosku.length>1 && $prosku.startsWith("#")) {
-
-        count10=1;
-        
-        $("#prodsku").hide();
-        $(this).css('border', 'solid 3px green');
-        
-        } 
-    else if(!$prosku.match(/^[a-zA-z0-9]+[a-zA-Z0-9#-]+$/))
+  
+    else if(!$prosku.match(/^([#-]*[a-zA-z0-9])+[a-zA-Z0-9#-]+$/))
     {
         $("#prodsku").html("*Select Valid sku");
         $("#prodsku").show();
@@ -435,9 +476,17 @@ $("#prosku").focusout(function() {
 
         $(this).css('border', 'solid 3px red'); 
         count10=0;
+
+        if($prosku.match(/^[a-zA-Z0-9]+$/))
+        {
+           
+           $("#prodsku").hide();
+           $(this).css('border', 'solid 3px green');
+           count10=1;
+       }
     }
 
-   
+    
   
     
     
@@ -491,14 +540,14 @@ $("#catname").focusout(function() {
      console.log(len);
      if(len>2)
      {
-       $("#catoname").text(msg);
-    $("#catoname").show();
+       $("#catoname12").html(msg);
+    $("#catoname12").show();
     $("#submit5").attr("disabled",true);
      }
-     else if(len==2)
+     else 
      {
 
-        $("#catoname").hide();
+        $("#catoname12").html("");
         $("#submit5").attr("disabled",false);
      }
 
@@ -507,6 +556,67 @@ $("#catname").focusout(function() {
 
 
 });
+
+
+
+
+
+
+    $("#catname").focusout(function() {
+        $catname = $(this).val();
+        if ($catname == "") {
+        $("#catoname12").html("*Enter Category Name");
+        $("#catoname12").show();
+        $("#submit11").attr("disabled",true);
+        $(this).css('border', 'solid 3px red');
+       
+        }
+        else if(!$catname.match(/^[a-zA-Z0-9]+[-/.]*$/))
+        {
+        $("#catoname12").html("*Enter Valid Category Name");
+        $("#catoname12").show();
+        $("#submit11").attr("disabled",true);
+        $(this).css('border', 'solid 3px red');
+       
+        }
+        
+        
+        else {
+        $("#submit11").attr("disabled",false);
+        $("#catoname12").hide();
+        $(this).css('border', 'solid 3px green');
+        }
+        
+        });
+
+
+
+$('#catname').bind("keypress keyup keydown", function (e){
+
+    var catname = $('#catname').val();
+    var regtwodots = /^(?!.*?\.\.).*?$/;
+    var lcatname = catname.length;
+    if ((catname.indexOf(".") == 0) || !(regtwodots.test(catname))) {
+    alert("invalid category name!!");
+    
+    $("#catoname12").html("*Enter Valid Product Name");
+    $("#catoname12").show();
+    $("#submit11").attr("disabled",true);
+    $(this).css('border', 'solid 3px red');
+    count2=0;
+    $("#catname").val("");
+    
+    return;
+    }
+    else if(Number.isInteger(parseInt($('#catname').val()))) {
+        alert('Please Enter Security Answer in Correct Format');
+        $('#catname').val("");
+        return false;
+        }
+        else
+        return true;
+    });
+
 
 
 

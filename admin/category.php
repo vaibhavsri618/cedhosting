@@ -30,7 +30,8 @@ require '../classes/Product.php';
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="index.php"><i class="fas fa-home"></i></a></li>
                  
-                  <li class="breadcrumb-item active" aria-current="page">Tables</li>
+                  <li class="breadcrumb-item active" >Product</li>
+                  <li class="breadcrumb-item active" aria-current="page">Category</li>
                 </ol>
               </nav>
             </div>
@@ -93,10 +94,10 @@ require '../classes/Product.php';
                       <span class="input-group-text"></span>
                     </div>
                     <input class="form-control" name="name" 
-                    placeholder="Name" type="text" id="catname" pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$" required><br>
+                    placeholder="Name" type="text" id="catname"  required><br>
                    
                   </div>
-                  <p id="catoname" style="color:red"></p>
+                  <p id="catoname12" style="color:red"></p>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge 
@@ -105,7 +106,7 @@ require '../classes/Product.php';
                       <span class="input-group-text"></span>
                     </div>
                     <input class="form-control"
-                     placeholder="Link" type="text" name="link">
+                     placeholder="HTML" type="text" name="link">
                   </div>
                 </div>
                 
@@ -138,7 +139,7 @@ require '../classes/Product.php';
                     data-sort="budget">Parent Product</th>
                     <th scope="col" class="sort" 
                     data-sort="status">Category Name </th>
-                    <th scope="col">Link</th>
+                    <th scope="col">HTML</th>
                     <th scope="col">Category Available</th>
                     <th scope="col" class="sort" 
                     data-sort="completion">Category Launch Date</th>

@@ -25,6 +25,7 @@ require 'header.php';
 <div>
 <span>Mobile Number<label>*</label></span>
 <input type="text" name="mobile" id="mobile" required> 
+<p id="catoname" style="color:red"></p>
 </div>
 <div>
 <span>Email Address<label>*</label></span>
@@ -51,8 +52,8 @@ require 'header.php';
 <h3>Security information</h3>
 <div>
 <span>Security Answer<label>*</label></span>
-<select name="ques">Security Question*</label>
-<option>Select a Security question</option>
+<select name="ques" required>Security Question*</label>
+<option value="" selected disabled hidden>Select a Security question</option>
 <option>What was your childhood nickname?</option>
 <option>What is the name of your favourite childhood friend?</option>
 <option>What was your favourite place to visit as a child?</option>
@@ -69,7 +70,7 @@ require 'header.php';
 <div class="clearfix"> </div>
 
 
-<input type="submit" value="submit" name="submit1">
+<input type="submit" value="submit" id="submit25" name="submit1">
 <div class="clearfix"> </div>
 </form>
 </div>
@@ -92,15 +93,12 @@ alert('Password not matched');
 $('#pass').val("");
 $("#repass").val("");
 return false;
-} else
-{
-return true;
 }
 
 
 
-if (Number.isInteger(parseInt($('#ans').val()))) {
-alert('Enter Security Answer in Correct Fornat');
+else if(Number.isInteger(parseInt($('#ans').val()))) {
+alert('Please Enter Security Answer in Correct Format');
 $('#ans').val("");
 return false;
 }
@@ -112,6 +110,11 @@ return true;
 
 
 }
+
+
+
+
+
 </script>
 <!-- login -->
 <!---footer--->

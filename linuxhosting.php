@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<li><span>Launch  </span> your business with Rs. 2000* Google AdWords Credit *</li>
 									<li><span>30 day </span> Money Back Guarantee</li>
 								</ul>
-									<a href="#">view plans</a>
+									<a href="#price">view plans</a>
 								</div>
 								<div class="col-md-4 linux-grid1">
 									<img src="images/linux.png" class="img-responsive" alt=""/>
