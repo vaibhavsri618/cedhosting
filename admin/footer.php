@@ -24,6 +24,13 @@
         </div>
       </footer>
 
+      <script>
+    tinymce.init({
+      selector: 'textarea'
+      
+   });
+  </script>
+
      
 
       <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -48,3 +55,7 @@ $(document).ready( function () {
     $('#Table').DataTable();
 } );
 </script>
+
+
+
+		

@@ -1,11 +1,15 @@
 <?php
 
 
-session_start();
+
 
 
 
 require 'header.php';
+
+if(isset($_SESSION['email']) && isset($_SESSION['mobile']))
+{
+
 
 
 
@@ -114,5 +118,9 @@ require 'header.php';
 
         <?php
         require 'footer.php';
+                    }
+                    else
+                    echo"<script>alert('Cant go back')
+                    window.location='index.php'</script>"
 
 ?>

@@ -76,7 +76,7 @@ if(isset($_GET['catid']))
 													<li><strong>location</strong> : <img src="images/india.png"></li>
 													</ul>
 												</div>
-												<a href="#">buy now</a>
+												<a href="addtocart.php?cartid=<?php echo $val['prod_id']; ?>">Buy Now</a>
 												<?php }
 												}?>
 											</div>

@@ -77,7 +77,7 @@ $("#proname").focusout(function() {
         $(this).css('border', 'solid 3px red');
         count2=0;
     }  
-    else if(!$proname.match(/^([a-zA-Z]+\s+[a-zA-Z])*[(a-zA-Z)]*(-[0-9]+(?!-)+)*$/))
+    else if(!$proname.match(/^[a-zA-Z_]+( [a-zA-Z_]+)*(-[0-9]+(?!-)+)*$/))
     {
         $("#prodname").html("*Select Valid Product Name");
         $("#prodname").show();
@@ -103,6 +103,26 @@ $("#proname").focusout(function() {
 
 $("#proprice").focusout(function() {
     $proprice = $("#proprice").val();
+    $proallprice = $("#proannualprice").val();
+
+    if($proallprice=="")
+    $proallprice=0;
+    console.log($proallprice);
+
+    
+
+        if ($proprice >= $proallprice) {
+            $("#prodprice").html("*Monthly Price Can't be less than Monthly Price");
+            $("#prodprice").show();
+           $("#submit10").attr("disabled",true);
+           $("#submit11").attr("disabled",true);
+    
+    
+            $("#proprice").css('border', 'solid 3px red');
+            count3=0;
+        }  
+
+    
    
    
     if ($proprice == "") {
@@ -147,6 +167,10 @@ $("#proannualprice").focusout(function() {
     $promonprice = $("#proprice").val();
     console.log($promonprice);
     console.log($proprice);
+
+   
+   
+
     if ($proprice == "") {
         $("#prodallprice").html("*Select Product Annual price");
         $("#prodallprice").show();
@@ -168,7 +192,8 @@ $("#proannualprice").focusout(function() {
         $(this).css('border', 'solid 3px red'); 
         count4=0;
     }
-    if ($promonprice >= $proprice) {
+
+   else if($promonprice >= $proprice) {
         $("#prodallprice").html("*Annual Price Can't be less than Monthly Price");
         $("#prodallprice").show();
        $("#submit10").attr("disabled",true);
@@ -178,7 +203,7 @@ $("#proannualprice").focusout(function() {
         $(this).css('border', 'solid 3px red');
         count4=0;
     }  
-    
+  
     else {
         
         $("#prodallprice").hide();
@@ -352,7 +377,6 @@ $("#prolang").focusout(function() {
     $("#prodlang").html("*Enter language!!");
     $("#prodlang").show();
     $("#submit10").attr("disabled",true);
-    $("#submit11").attr("disabled",true);
     
     $(this).css('border', 'solid 3px red');
     count8=0;
@@ -362,29 +386,31 @@ $("#prolang").focusout(function() {
     $("#prodlang").html("*Enter Valid language");
     $("#prodlang").show();
     $("#submit10").attr("disabled",true);
-    $("#submit11").attr("disabled",true);
     $(this).css('border', 'solid 3px red');
     count8=0;
+    if($prolang.match(/^[a-zA-Z]+$/)) {
+    count8=1;
     
+    $("#prodlang").hide();
+    $(this).css('border', 'solid 3px green');
     }
     
+    }
+   
     
-  
+    
+   
     
     else {
     
     count8=1;
-    //$("#add").attr("disabled",false);
+   
     $("#prodlang").hide();
     $(this).css('border', 'solid 3px green');
-    $("#submit11").attr("disabled",false);
-    
-
     if($prolang.endsWith(",")) {
     $("#prodlang").html("*Enter Valid language");
     $("#prodlang").show();
     $("#submit10").attr("disabled",true);
-    $("#submit11").attr("disabled",true);
     
     $(this).css('border', 'solid 3px red');
     count8=0;
@@ -392,13 +418,26 @@ $("#prolang").focusout(function() {
     $("#prodlang").html("*Enter Valid language");
     $("#prodlang").show();
     $("#submit10").attr("disabled",true);
-    $("#submit11").attr("disabled",true);
+    
+    $(this).css('border', 'solid 3px red');
+    count8=0;
+    } else if($prolang.match(/^[0-9]+$/)) {
+    $("#prodlang").html("*Enter Valid language");
+    $("#prodlang").show();
+    $("#submit10").attr("disabled",true);
+    
+    $(this).css('border', 'solid 3px red');
+    count8=0;
+    } else if($prolang.match(/^(([a-zA-Z0-9]+)+(,[0-9]*)+)+$/)) {
+    $("#prodlang").html("*Enter Valid language");
+    $("#prodlang").show();
+    $("#submit10").attr("disabled",true);
     
     $(this).css('border', 'solid 3px red');
     count8=0;
     }
     }
-    buttonShow();
+    buttonShow ();
     
     
     

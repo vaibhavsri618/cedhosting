@@ -1,7 +1,7 @@
 <?php
 
 
-		
+session_start();		
 $filename=basename($_SERVER['REQUEST_URI']);
 //$file=explode("?", $filename);
 $file=$filename;
@@ -31,6 +31,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+
+<!-- <script src="https://cdn.tiny.cloud/1/30agyd5vj5u9yzy089frhjolkqw6mdbdef43c5pcvukgxcp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> -->
 
 <!---fonts-->
 <!--script-->
@@ -129,11 +132,9 @@ $(".swipebox").swipebox();
 							
 						
 								<li class="<?php if ($file[0]=='pricing.php') : ?>active<?php endif; ?>"><a href="pricing.php">Prices</a></li>
-								<li class="<?php if ($file[0]=='blog.php') : ?>active<?php endif; ?>"><a href="blog.php">Blog</a></li>
+							<li class="<?php if ($file[0]=='blog.php') : ?>active<?php endif; ?>"><a href="blog.php">Blog</a></li>
 								<li class="<?php if ($file[0]=='contact.php') : ?>active<?php endif; ?>"><a href="contact.php">Contact</a></li>
-							
-								<li class="<?php if ($file[0]=='cart.php') : ?>active<?php endif; ?>"><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
-								<?php
+									<?php
 								if(!isset($_SESSION['userdata']))
 								{?>
 								<li class="<?php if ($file[0]=='login.php') : ?>active<?php endif; ?>"><a href="login.php">Login</a></li>
@@ -145,6 +146,19 @@ $(".swipebox").swipebox();
 									<?php
 								}
 								?>
+							
+								<li class="<?php if ($file[0]=='cart.php') : ?>active<?php endif; ?>"><a href="cart.php" id="cart"><i class="fas fa-shopping-cart" style="font-size:30px"></i><span class='badge badge-warning' id='lblCartCount'> <?php 
+								
+								if(isset($_SESSION['cart']))
+								{
+									echo count($_SESSION['cart']);
+								}
+								
+								?> </span></a></li>
+
+									
+
+								
 								
 							</ul>
 									  

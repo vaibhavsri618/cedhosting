@@ -36,6 +36,8 @@ if ($_SESSION['userdata']['name']=="admin") {
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 
+
+  
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
@@ -44,6 +46,11 @@ if ($_SESSION['userdata']['name']=="admin") {
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+
+  <!-- <script src="https://cdn.tiny.cloud/1/30agyd5vj5u9yzy089frhjolkqw6mdbdef43c5pcvukgxcp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"> -->
+
+
+      <script src="https://cdn.tiny.cloud/1/30agyd5vj5u9yzy089frhjolkqw6mdbdef43c5pcvukgxcp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>

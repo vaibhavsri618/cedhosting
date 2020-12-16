@@ -105,8 +105,10 @@ require '../classes/Product.php';
                     <div class="input-group-prepend">
                       <span class="input-group-text"></span>
                     </div>
-                    <input class="form-control"
-                     placeholder="HTML" type="text" name="link">
+                    <!-- <input class="form-control"
+                     placeholder="HTML" type="text" name="link"> -->
+
+                     <textarea  name="link"></textarea>
                   </div>
                 </div>
                 

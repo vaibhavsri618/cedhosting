@@ -10,13 +10,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
 
+require 'header.php';
 
-session_start();
 if (isset($_SESSION['userdata'])) {
 
 }
 
-require 'header.php';
+
 ?>
 	<!---header--->
 	<!---banner--->
