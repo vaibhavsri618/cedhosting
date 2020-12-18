@@ -101,7 +101,9 @@ class Product
             $last_id = $conn->insert_id;
             return $last_id;
             
-        } 
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 
     function addfinalproduct($row, $price1, $price2, $conn, $sku, $json_arr)

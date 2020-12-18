@@ -91,7 +91,7 @@ require '../classes/Product.php';
                         <div class="form-group">
                             <label class="form-control-label" for="input-first-name">Page HTML </label>
                             <!-- <input type="text" id="input-first-name" name="url" class="form-control" placeholder="Page URL"> -->
-                            <textarea id="input-first-name" name="url" class="form-control" placeholder="Page HTML"></textarea>
+                            <input id="input-first-name" name="url" class="form-control" placeholder="Page HTML">
                             <p id="produrl" style="color:red"></p>
                         </div>
                     </div>

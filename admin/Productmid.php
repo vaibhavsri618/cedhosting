@@ -64,7 +64,7 @@ if(isset($_POST['submit10']))
     $sku=$_POST['sku'];
     $webspace=$_POST['webspace'];
     $band=$_POST['band'];
-
+   
     $free=$_POST['free'];
     $lang=$_POST['lang'];
     $mail=$_POST['mail'];
@@ -86,7 +86,7 @@ if(isset($_POST['submit10']))
     $pro=new Product();
     $dbconnect=new Dbconnect();
     $row=$pro->addproduct($name, $select, $link, $dbconnect->conn);
-
+   
     $arr=array("webspace"=>$webspace,
                 "band"=>$band,
                 "free"=>$free,

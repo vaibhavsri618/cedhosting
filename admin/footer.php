@@ -24,12 +24,12 @@
         </div>
       </footer>
 
-      <script>
+      <!-- <script>
     tinymce.init({
       selector: 'textarea'
       
    });
-  </script>
+  </script> -->
 
      
 

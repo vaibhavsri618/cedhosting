@@ -50,7 +50,7 @@ if ($_SESSION['userdata']['name']=="admin") {
   <!-- <script src="https://cdn.tiny.cloud/1/30agyd5vj5u9yzy089frhjolkqw6mdbdef43c5pcvukgxcp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"> -->
 
 
-      <script src="https://cdn.tiny.cloud/1/30agyd5vj5u9yzy089frhjolkqw6mdbdef43c5pcvukgxcp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+      <!-- <script src="https://cdn.tiny.cloud/1/30agyd5vj5u9yzy089frhjolkqw6mdbdef43c5pcvukgxcp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> -->
 </head>
 
 <body>
