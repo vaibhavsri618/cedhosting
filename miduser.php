@@ -186,21 +186,17 @@ if (isset($_POST['loginsubmit'])) {
                 header('Location:index.php');
 
             } elseif ($admin == 0 && $active == 0 && $email_approve==0 && $phone_approve==0) {
-                $_SESSION['userdata'] = array(
-                    'userid' => $id,
-                    'username' => $email,
-                    'name' => $name,
-                );
+               
 
                 echo '<script>alert("Please Approve First")
-            window.location="account.php"</script>';
+            window.location="validation.php"</script>';
 
             } elseif ($admin == 0 && $active == 0 && ($email_approve==1 || $phone_approve==1)) {
-                $_SESSION['userdata'] = array(
-                    'userid' => $id,
-                    'username' => $email,
-                    'name' => $name,
-                );
+                // $_SESSION['userdata'] = array(
+                //     'userid' => $id,
+                //     'username' => $email,
+                //     'name' => $name,
+                // );
 
                 echo '<script>alert("Admin has block you")
             window.location="account.php"</script>';

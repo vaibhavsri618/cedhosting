@@ -4,7 +4,7 @@ session_start();
 if(isset($_GET['delid']))
 {
     $id=$_GET['delid'];
-    unset($_SESSION['cart'][$id]);
+    unset($_SESSION['cartshow'][$id]);
 
     
     echo "<script>alert('Product Deleted from the cart Successfully')

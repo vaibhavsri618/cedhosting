@@ -183,7 +183,7 @@ require '../classes/Product.php';
                      
                     </td>
                     <td>
-
+                    <textarea>
                     <?php 
                     if ($row['html']=="") {
                         $link="Null";
@@ -195,6 +195,7 @@ require '../classes/Product.php';
                     echo $link;
                     
                     ?>
+                    </textarea>
                       
                     </td>
                     <td>
@@ -224,7 +225,7 @@ require '../classes/Product.php';
                     </td>
                   </tr>
 
-  <div class="modal fade" id="modalForm<?php echo $row['id'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+ <div class="modal fade" id="modalForm<?php echo $row['id'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -250,9 +251,9 @@ require '../classes/Product.php';
 
 
         <div class="md-form mb-4">
-          <label data-error="wrong" data-success="right" for="defaultForm-pass">Link</label>
-          <input type="text" id="defaultForm-pass" class="form-control validate" name="updatelink" value="<?php echo $link ?>" required>
-         
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">HTML</label>
+          <!-- <input type="text" id="defaultForm-pass" class="form-control validate" name="updatelink" value="<?php echo $link ?>" required> -->
+         <textarea type="text" id="defaultForm-pass" class="form-control validate" name="updatelink" value="<?php echo $link ?>"></textarea>
         </div>
 
         <div class="md-form mb-4">

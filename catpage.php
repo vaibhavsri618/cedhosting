@@ -76,7 +76,61 @@ if(isset($_GET['catid']))
 													<li><strong>location</strong> : <img src="images/india.png"></li>
 													</ul>
 												</div>
-												<a href="addtocart.php?cartid=<?php echo $val['prod_id']; ?>">Buy Now</a>
+											
+												<a href="" class="btn btn-default btn-rounded mb-4" 
+                    data-toggle="modal" data-target="#modalForm<?php echo $val['prod_id'];?>">Buy Now</a>
+
+
+					<div class="modal fade" id="modalForm<?php echo $val['prod_id'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add To Cart</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="addtocart.php" method="post">
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+        <label data-error="wrong" data-success="right" for="defaultForm-email">Product Name</label>
+          <input type="text" id="defaultForm-email" class="form-control validate" value="<?php echo $val['prod_name'] ?>" readonly name="prod_name">
+          <input type="hidden" name="hidden" value="<?php echo $val['prod_id']?>">
+        </div>
+
+       
+
+       
+
+        <div class="md-form mb-4">
+         
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Plan</label>
+          <select class="form-control validate" name="viewplan" required>
+          <option value="" selected disabled hidden>Please Select Your Plan</option>
+		 
+		  <option value="<?php echo $val['mon_price'];?>">Monthly</option>
+		  <option value="<?php echo $val['annual_price'];?>">Annually</option>
+		  
+		  
+          
+          </select>
+
+
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center ">
+        <input type="submit" style="margin-right:230px" class="btn btn-success" id="btnaddtocart" value="Add to Cart" name="showaddtocart">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
 												<?php }
 												}?>
 											</div>

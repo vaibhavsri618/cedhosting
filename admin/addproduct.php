@@ -89,8 +89,9 @@ require '../classes/Product.php';
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label class="form-control-label" for="input-first-name">Page URL </label>
-                            <input type="text" id="input-first-name" name="url" class="form-control" placeholder="Page URL">
+                            <label class="form-control-label" for="input-first-name">Page HTML </label>
+                            <!-- <input type="text" id="input-first-name" name="url" class="form-control" placeholder="Page URL"> -->
+                            <textarea id="input-first-name" name="url" class="form-control" placeholder="Page HTML"></textarea>
                             <p id="produrl" style="color:red"></p>
                         </div>
                     </div>

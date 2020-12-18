@@ -105,22 +105,35 @@ $("#proprice").focusout(function() {
     $proprice = $("#proprice").val();
     $proallprice = $("#proannualprice").val();
 
-    if($proallprice=="")
-    $proallprice=0;
-    console.log($proallprice);
+   
+   
+    $proprice1 = parseFloat($("#proprice").val());
+    $proallprice1 = parseFloat($("#proannualprice").val());
+
+    console.log($proallprice1);
+
 
     
-
-        if ($proprice >= $proallprice) {
-            $("#prodprice").html("*Monthly Price Can't be less than Monthly Price");
-            $("#prodprice").show();
+        if($proallprice!="")
+        {
+        if ($proprice1 >= $proallprice1) {
+            $("#prodallprice").html("*Annual Price Can't be less than Monthly Price");
+            $("#prodallprice").show();
            $("#submit10").attr("disabled",true);
            $("#submit11").attr("disabled",true);
     
     
             $("#proprice").css('border', 'solid 3px red');
-            count3=0;
-        }  
+            $("#proannualprice").css('border','solid 3px red');
+            count4=0;
+        }  else
+        {
+            $("#prodprice").hide();
+            $("#proprice").css('border', 'solid 3px green');
+            $("#proannualprice").css('border','solid 3px green');
+            count4=1;
+        }
+    }
 
     
    
@@ -168,8 +181,10 @@ $("#proannualprice").focusout(function() {
     console.log($promonprice);
     console.log($proprice);
 
-   
-   
+
+    $proprice2 = parseFloat($("#proannualprice").val());
+    $promonprice2 = parseFloat($("#proprice").val());
+
 
     if ($proprice == "") {
         $("#prodallprice").html("*Select Product Annual price");
@@ -193,26 +208,47 @@ $("#proannualprice").focusout(function() {
         count4=0;
     }
 
-   else if($promonprice >= $proprice) {
-        $("#prodallprice").html("*Annual Price Can't be less than Monthly Price");
+  
+  
+    else {
+        
+       
+        $("#submit11").attr("disabled",false);
+        $("#prodallprice").hide();
+
+        $(this).css('border', 'solid 3px green');
+       
+        count4=1;
+
+
+
+    if($promonprice2!=0)
+    {
+
+    if($promonprice2 >= $proprice2) {
+       
         $("#prodallprice").show();
+        $("#prodallprice").html("*Annual Price Can't be less than Monthly Price");
        $("#submit10").attr("disabled",true);
        $("#submit11").attr("disabled",true);
 
 
-        $(this).css('border', 'solid 3px red');
+        $("#proannualprice").css('border', 'solid 3px red');
+        // $("#proprice").css('border','solid 3px red');
         count4=0;
-    }  
-  
-    else {
-        
+    }  else {
         $("#prodallprice").hide();
-        $("#submit11").attr("disabled",false);
+       
 
-        $(this).css('border', 'solid 3px green');
-        count4=1;
+    $("#proannualprice").css('border', 'solid 3px green');
+    // $("#proprice").css('border','solid 3px green');
+    count4=1;
+    $("#prodallprice").hide();
+    }
+}
     }
 
+  
     buttonShow();
 
 

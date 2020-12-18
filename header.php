@@ -149,9 +149,9 @@ $(".swipebox").swipebox();
 							
 								<li class="<?php if ($file[0]=='cart.php') : ?>active<?php endif; ?>"><a href="cart.php" id="cart"><i class="fas fa-shopping-cart" style="font-size:30px"></i><span class='badge badge-warning' id='lblCartCount'> <?php 
 								
-								if(isset($_SESSION['cart']))
+								if(isset($_SESSION['cartshow']))
 								{
-									echo count($_SESSION['cart']);
+									echo count($_SESSION['cartshow']);
 								}
 								
 								?> </span></a></li>

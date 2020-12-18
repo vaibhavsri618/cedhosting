@@ -1,7 +1,7 @@
 <?php
 
 require 'header.php';
-if(isset($_SESSION['cart']))
+if(isset($_SESSION['cart']) && isset($_SESSION['cartshow']))
 {
 
 ?>
@@ -22,22 +22,17 @@ echo "Welcome ".$_SESSION['userdata']['name']."";
                 <thead class="thead-light" id="Table">
                   <tr>
                     <th scope="col" class="sort" data-sort="name">Product Name</th>
-                    <th scope="col" class="sort" data-sort="budget">Product Price(Monthly)</th>
-                    <th scope="col" class="sort" data-sort="status">Product Price(Annually)</th>
-                    <th scope="col">SKU</th>
-                    <th scope="col" class="sort" data-sort="completion">Free Domain</th>
-                    <th scope="col">Band Width</th>
-                    <th scope="col">Webspace</th>
-                    <th scope="col">Language Support</th>
-                    <th scope="col">Mail</th>
+                    <th scope="col" class="sort" data-sort="budget">Product Price(Plan)</th>
+                   
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody class="list">
                 
                       <?php 
+                      $total=0;
                       
-                      foreach($_SESSION['cart'] as $key=>$val)
+                      foreach($_SESSION['cartshow'] as $key=>$val)
                       {
                           
                     
@@ -50,53 +45,10 @@ echo "Welcome ".$_SESSION['userdata']['name']."";
                        
                       </div>
                     </th>
-                    <td class="budget text-center">
-                      $<?php echo $val['monprice'] ?>
+                    <td class="budget">
+                      $<?php echo $val['plan'] ?>
                     </td>
-                    <td class="budget text-center">
-                      $<?php echo $val['annualprice'] ?>
-                    </td>
-                    <td>
-                      
-                       <?php echo $val['sku'] ?>
-                     
-                    </td>
-                    <td class="text-center">
-                     
-                       <?php
-                            echo $val['domain'];
-                       ?>
-                      
-                    </td>
-                    <td class="text-center">
-                      
-                        <?php echo $val['band'] ?>
-                      
-                    </td>
-                    <td class="text-center">
-                     
-                      <?php
-                            echo $val['web']
-                      ?>
-                       
-                     
-                    </td>
-
-                    <th scope="row">
-                      <div class="media align-items-center"><?php
-                      echo $val['lang'];?>
-                       
-                      </div>
-                    </th>
-
-                    <th scope="row">
-                      <div class="media align-items-center"><?php
-                      echo $val['mail'];?>
-                       
-                      </div>
-                    </th>
-
-                    <td class="text-right">
+                    <td class="text">
                       
                           <a class="btn btn-danger" href="deletecartdata.php?delid=<?php echo $key?>">Delete</a>
                           
@@ -104,22 +56,33 @@ echo "Welcome ".$_SESSION['userdata']['name']."";
                     </td>
                   </tr>
                   <?php
+                      $total=$total+$val['plan'];
+                      }
+                      ?>
+                     
+                      <tr>
+                      <td>Total</td>
 
-                      }?>
+                      <td><b>$<?php echo $total ?></b></tr>
                   </tbody>
               </table>
             <div class="text-center">
-              <a href="#" class="btn btn-success">Check out</a>
+              <a href="checkout.php" class="btn btn-success">Check out</a>
                     </div>
             </div>
            
 
 <?php
-}
+} else{
 ?>
+
 <h1 class='text-center'>Oops!..Cart is empty</h1>
 <?php
-require 'footer.php';
-                    
-
+}
 ?>
+<div style="margin-top:100px">
+<?php
+require 'footer.php';
+?>
+<div>                    
+
