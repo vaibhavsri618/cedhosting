@@ -88,7 +88,8 @@ if (isset($_GET['catid'])) {
         <div class="md-form mb-5">
         <label data-error="wrong" data-success="right" for="defaultForm-email">Product Name</label>
           <input type="text" id="defaultForm-email" class="form-control validate" value="<?php echo $val['prod_name'] ?>" readonly name="prod_name">
-          <input type="hidden" name="hidden" value="<?php echo $val['prod_id'] ?>">
+		  <input type="hidden" name="hidden" value="<?php echo $val['prod_id'] ?>">
+		  <input type="hidden" name="hidden1" value="<?php echo $id ?>">
         </div>
 
 

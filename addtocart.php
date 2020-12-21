@@ -19,6 +19,7 @@ if(isset($_POST['showaddtocart']))
     $name11="";
     $plan=$_POST['viewplan'];
     $name1=$_POST['prod_name'];
+    $parentid=$_POST['hidden1'];
     
     $hidden=$_POST['hidden'];
     foreach ($_SESSION['cartshow'] as $key=>$val)
@@ -45,11 +46,13 @@ if(isset($_POST['showaddtocart']))
     {
 
         $name=$val['prod_name'];
+        $id=$val['prod_id'];
         $monprice=$val['mon_price'];
         $annualprice=$val['annual_price'];
         $sku=$val['sku'];
         $desc=$val['description'];
         $parentid=$val['prod_parent_id'];
+
        
 
 
@@ -60,15 +63,24 @@ if(isset($_POST['showaddtocart']))
     $band=$arr['band'];
     $lang=$arr['lang'];
     $web=$arr['webspace'];
+    if($plan==$monprice)
+    {
+        $billingcycle="Montly";
+    }else
+    {
+        $billingcycle="Annually";
+    }
    
     $cart=array("name"=>$name,"monprice"=>$monprice,"annualprice"=>$annualprice,
     "sku"=>$sku,"domain"=>$domain,"mail"=>$mail,"band"=>$band,"lang"=>$lang,"web"=>$web);
-    $cartshow=array("name"=>$name1,"plan"=>$plan);
+    $cartshow=array("name"=>$name1,"plan"=>$plan,"sku"=>$sku,"billingcycle"=>$billingcycle,"id"=>$id,"parentid"=>$parentid);
    
 
     array_push($_SESSION['cart'],$cart);
     array_push($_SESSION['cartshow'],$cartshow);
 
+
+    // print_r($cartshow);
    
 
     echo "<script>alert('Product Added Successfully')

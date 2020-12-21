@@ -160,4 +160,15 @@ VALUES ('" . $email . "','" . $name . "','" . $mobile . "',0,0,0,0,'" . $passwor
 
     }
 
+
+    function viewparent($conn,$id12)
+    {
+        $row11=array();
+        $sql = "SELECT * FROM tbl_product WHERE id='".$id12."'";
+        $result = $conn->query($sql);
+        return $result;
+
+    
+     }
+
 }

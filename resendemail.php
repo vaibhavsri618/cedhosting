@@ -30,12 +30,12 @@ require '/home/cedcoss/vendor/autoload.php';
                 $mail->isSMTP(true);
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'vaibhavsri618@gmail.com';
-                $mail->Password = '8009652584';
+                $mail->Username = 'abc@gmail.com';//email goes here
+                $mail->Password = 'password';//password goes here
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setfrom('vaibhavsri618@gmail.com', 'CedHosting');
+                $mail->setfrom('abc@gmail.com', 'CedHosting');//email and orgo name here
                 $mail->addAddress($email);
                 $mail->addAddress($email, $name);
 
